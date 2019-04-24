@@ -15,8 +15,10 @@ Horn.prototype.render = function(){
 
   $hornClone.find('h2').text(this.title);
   $hornClone.find('img').attr('src', this.image_url);
-  $hornClone.find('figcaption').text(this.description + ' number of horns ' + this.horns);
+  $hornClone.find('figcaption').text(`${this.description} Number of horns ${this.horns}`);
   $hornClone.find('p').text(this.keyword);
+
+  $hornClone.appendTo('main');
 }
 
 Horn.readJson = () => {
