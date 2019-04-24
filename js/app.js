@@ -27,3 +27,11 @@ Horn.loadHorns = () => {
   Horn.allHorns.forEach(horn => horn.render());
 };
 
+//Shorthand for single point of entry
+$(() => Horn.readJson());
+
+// DOM-ready function
+$(document).ready(function(){
+  $('#photo-template').hide();
+});
+
