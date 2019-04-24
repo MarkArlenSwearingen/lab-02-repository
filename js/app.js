@@ -21,6 +21,15 @@ Horn.prototype.render = function(){
   $hornClone.appendTo('main');
 }
 
+Horn.prototype.populateDropDownMenu = function() {
+  let list = $('#dropDown').clone();
+  let $list = $(list[0].content);
+
+  $list.find('option').text(this.keyword);
+  $list.appendTo('select');
+}
+
+
 Horn.readJson = () => {
   $.get('./data/page-1.json')
     .then(data => {
@@ -33,7 +42,11 @@ Horn.readJson = () => {
 
 Horn.loadHorns = () => {
   Horn.allHorns.forEach(horn => horn.render());
+  Horn.allHorns.forEach(horn => horn.populateDropDownMenu());
 };
+
+
+
 
 //Shorthand for single point of entry
 $(() => Horn.readJson());
