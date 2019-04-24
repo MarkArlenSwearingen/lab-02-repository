@@ -13,3 +13,17 @@ Horn.prototype.render = function(){
 
 }
 
+Horn.readJson = () => {
+  $.get('./data/page-1.json')
+    .then(data => {
+      data.forEach(element => {
+        Horn.allHorns.push(new Horn(element))
+      });
+    })(
+    .then(Horn.loadHorns);
+};
+
+Horn.loadHorns = () => {
+  Horn.allHorns.forEach(horn => horn.render());
+};
+
