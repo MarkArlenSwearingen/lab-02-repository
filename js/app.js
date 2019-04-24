@@ -26,6 +26,10 @@ Horn.prototype.populateDropDownMenu = function() {
   let $list = $(list[0].content);
 
   $list.find('option').text(this.keyword);
+  $list.find('option').attr('data-keyword', this.keyword);
+  $list.find('option').val(this.keyword);
+  // var a = $list;
+  // console.log(a);
   $list.appendTo('select');
 }
 
@@ -56,3 +60,11 @@ $(document).ready(function(){
   $('#photo-template').hide();
 });
 
+//select dropdown for filtering
+$('select').on('click',function(){
+  let $selection = $(this).val();
+  $(`img`).hide().not($selection);
+  console.log($selection);
+  $(`img[data-keyword="${$selection}"]`).show();
+  console.log($selection);
+});
