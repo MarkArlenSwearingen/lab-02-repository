@@ -10,7 +10,13 @@ function Horn(horn){
 Horn.allHorns = [];
 
 Horn.prototype.render = function(){
+  let hornClone = $('#photo-template').clone();
+  let $hornClone = $(hornClone[0].content);
 
+  $hornClone.find('h2').text(this.title);
+  $hornClone.find('img').attr('src', this.image_url);
+  $hornClone.find('figcaption').text(this.description + ' number of horns ' + this.horns);
+  $hornClone.find('p').text(this.keyword);
 }
 
 Horn.readJson = () => {
@@ -19,7 +25,7 @@ Horn.readJson = () => {
       data.forEach(element => {
         Horn.allHorns.push(new Horn(element))
       });
-    })(
+    })
     .then(Horn.loadHorns);
 };
 
