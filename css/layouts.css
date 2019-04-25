@@ -1,0 +1,21 @@
+figure {
+  display: float;
+  background-color: greenyellow;
+  text-align: center;
+  max-width: 300px;
+  min-height: 200px;
+  margin: 5px;
+}
+
+img {
+  max-width: 300px;
+  max-height: 125px;
+}
+section {
+  float: left;
+}
+
+footer {
+  clear: left;
+  text-align: center;
+}
