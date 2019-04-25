@@ -1,3 +1,10 @@
+// --------------------------------------------------
+//               Global Variables
+// --------------------------------------------------
+Horn.allHorns = [];
+// --------------------------------------------------
+//               Functions
+// --------------------------------------------------
 
 function Horn(horn){
   this.image_url = horn.image_url;
@@ -7,14 +14,13 @@ function Horn(horn){
   this.horns = horn.horns;
 }
 
-Horn.allHorns = [];
-
 Horn.prototype.render = function(){
   let hornClone = $('#photo-template').clone();
   let $hornClone = $(hornClone[0].content);
 
   $hornClone.find('h2').text(this.title);
   $hornClone.find('img').attr('src', this.image_url);
+  $hornClone.find('img').attr('alt', this.keyword);
   $hornClone.find('figcaption').text(`${this.description} Number of horns ${this.horns}`);
   $hornClone.find('p').text(this.keyword);
 
@@ -28,11 +34,9 @@ Horn.prototype.populateDropDownMenu = function() {
   $list.find('option').text(this.keyword);
   $list.find('option').attr('data-keyword', this.keyword);
   $list.find('option').val(this.keyword);
-  // var a = $list;
-  // console.log(a);
+  $list.find('img').attr('alt', this.keyword);
   $list.appendTo('select');
 }
-
 
 Horn.readJson = () => {
   $.get('./data/page-1.json')
@@ -49,22 +53,22 @@ Horn.loadHorns = () => {
   Horn.allHorns.forEach(horn => horn.populateDropDownMenu());
 };
 
-
-
-
-//Shorthand for single point of entry
-$(() => Horn.readJson());
-
 // DOM-ready function
 $(document).ready(function(){
   $('#photo-template').hide();
 });
 
+// --------------------------------------------------
+//               Script
+// --------------------------------------------------
+//Shorthand for single point of entry
+$(() => Horn.readJson());
+
 //select dropdown for filtering
 $('select').on('click',function(){
   let $selection = $(this).val();
-  $(`img`).hide().not($selection);
-  console.log($selection);
-  $(`img[data-keyword="${$selection}"]`).show();
+  $(`img`).hide();
+  $(`img[alt="${$selection}"]`).show();
+  // $(`img[data-flavor="${$selection}"]`).show();
   console.log($selection);
 });
