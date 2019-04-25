@@ -1,3 +1,18 @@
+@import url("./layouts.css");
+@import url("./modules.css");
 h2 {
   font-family: 'Montserrat', sans-serif;
+  color: blue;
+}
+body {
+  background: hotpink;
+}
+
+figcaption {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 90%;
+}
+
+header {
+  background-color: aquamarine;
 }
