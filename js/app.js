@@ -21,7 +21,8 @@ Horn.prototype.render = function(){
   $hornClone.find('h2').text(this.title);
   $hornClone.find('h2').attr('data-keyword', this.keyword);
   $hornClone.find('img').attr('src', this.image_url);
-  $hornClone.find('img').attr('alt', this.keyword);
+  $hornClone.find('img').attr('data-keyword', this.keyword);
+  $hornClone.find('img').attr('alt', this.description);
   $hornClone.find('figcaption').text(`${this.description} Number of horns ${this.horns}`);
   $hornClone.find('figcaption').attr('data-keyword', this.keyword);
   $hornClone.find('p').text(this.keyword);
@@ -77,6 +78,7 @@ $('select').on('click',function(){
   $(`p[data-keyword="${$selection}"]`).show();
   $(`h2[data-keyword="${$selection}"]`).show();
   $(`figcaption[data-keyword="${$selection}"]`).show();
+  $(`img[data-keyword="${$selection}"]`).show();
   $(`img[alt="${$selection}"]`).show();
   // $(`img[data-flavor="${$selection}"]`).show();
   console.log($selection);
