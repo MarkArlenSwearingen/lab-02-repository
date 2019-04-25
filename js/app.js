@@ -80,6 +80,4 @@ $('select').on('click',function(){
   $(`figcaption[data-keyword="${$selection}"]`).show();
   $(`img[data-keyword="${$selection}"]`).show();
   $(`img[alt="${$selection}"]`).show();
-  // $(`img[data-flavor="${$selection}"]`).show();
-  console.log($selection);
 });
